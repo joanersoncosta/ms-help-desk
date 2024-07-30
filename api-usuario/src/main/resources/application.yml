@@ -1,9 +1,22 @@
+server:
+ port: 8081
+ servlet:
+  context-path: /api
+  
+logging:
+ file:
+  name: ./logs/log-file.log
+ level: 
+  com.github.joanersoncosta: ${LOG_LEVEL:DEBUG} 
+        
 spring:
  application:
   name: api-usuario
-  
+     
  data:
   mongodb:
    authentication-database: admin
    uri: ${MONGO_DB_URI:mongodb+srv://helpDesk:help-desk-user@wakandadev.cjsar7m.mongodb.net/helpdeskdb?retryWrites=true&w=majority}
    auto-index-creation: true  
+   
+    

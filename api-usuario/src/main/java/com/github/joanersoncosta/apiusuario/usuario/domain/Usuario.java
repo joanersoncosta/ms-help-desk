@@ -29,5 +29,6 @@ public class Usuario {
 	private String nome;
 	@Indexed(unique = true)
 	private String email;
+	private String senha;
 	private Set<PerfilUsuario> perfil;
 }
