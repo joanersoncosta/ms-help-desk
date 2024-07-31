@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.hdcommonslib.usuario.enuns.PerfilUsuario;
 
 import lombok.AccessLevel;
@@ -31,4 +32,12 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private Set<PerfilUsuario> perfil;
+	
+	public Usuario(UsuarioNovoRequest usuarioRequest) {
+		this.idUsuario = UUID.randomUUID();
+		this.nome = usuarioRequest.nome();
+		this.email = usuarioRequest.email();
+		this.senha = usuarioRequest.senha();
+		this.perfil = usuarioRequest.perfil();
+	}
 }
