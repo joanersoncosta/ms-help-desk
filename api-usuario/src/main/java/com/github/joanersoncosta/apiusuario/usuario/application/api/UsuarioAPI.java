@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
-import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioResponse;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
 
 import jakarta.validation.Valid;
 

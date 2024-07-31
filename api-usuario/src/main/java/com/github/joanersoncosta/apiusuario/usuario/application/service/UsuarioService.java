@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
-import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioResponse;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
 
 public interface UsuarioService {
 	UsuarioNovoResponse criaNovoUsuario(UsuarioNovoRequest usuarioRequest);
