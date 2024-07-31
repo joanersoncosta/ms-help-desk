@@ -16,12 +16,11 @@ public record UsuarioNovoRequest(
 		String nome,
 		@NotBlank(message = "Campo email não pode estar em branco.")
 		@Indexed(unique = true)
-		@Email(message = "Email invalido, digite novamento.")
+		@Email(message = "Email invalido, digite novamente.")
 		String email,
 		@NotBlank(message = "Campo senha não pode estar em branco.")
 		@Size(min = 4, max = 6, message = "A senha deve ter entre 4 e 6 dígitos.")
 		String senha,
 		@NotEmpty(message = "O Usuario deve ter pelo menos um perfil")
-		Set<PerfilUsuario> perfil
-		) {
+		Set<PerfilUsuario> perfil) {
 }

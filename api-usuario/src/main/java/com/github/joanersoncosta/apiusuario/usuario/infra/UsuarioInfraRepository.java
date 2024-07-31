@@ -1,5 +1,8 @@
 package com.github.joanersoncosta.apiusuario.usuario.infra;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -26,6 +29,14 @@ public class UsuarioInfraRepository implements UsuarioRepository {
 			throw APIException.build(HttpStatus.BAD_REQUEST, "Úsuario já cadastrado.");
 		}
 		log.debug("[finish] UsuarioInfraRepository - salva");
+		return usuario;
+	}
+
+	@Override
+	public Optional<Usuario> buscaUsuarioPorId(UUID idUsuario) {
+		log.debug("[start] UsuarioInfraRepository - buscaUsuarioPorId");
+		Optional<Usuario> usuario = usuarioSpringMongoDBRepository.findById(idUsuario);
+		log.debug("[finish] UsuarioInfraRepository - buscaUsuarioPorId");
 		return usuario;
 	}
 }
