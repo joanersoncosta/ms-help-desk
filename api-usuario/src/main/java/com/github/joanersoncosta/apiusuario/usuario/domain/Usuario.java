@@ -3,6 +3,7 @@ package com.github.joanersoncosta.apiusuario.usuario.domain;
 import java.util.Set;
 import java.util.UUID;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.With;
-import nonapi.io.github.classgraph.json.Id;
 
 @With
 @Getter
