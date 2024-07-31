@@ -26,7 +26,7 @@ public class UsuarioInfraRepository implements UsuarioRepository {
 		try {
 			usuarioSpringMongoDBRepository.save(usuario);
 		} catch (DataIntegrityViolationException ex) {
-			throw APIException.build(HttpStatus.BAD_REQUEST, "Úsuario já cadastrado.");
+			throw APIException.build(HttpStatus.BAD_REQUEST, "Úsuario já cadastrado.", ex);
 		}
 		log.debug("[finish] UsuarioInfraRepository - salva");
 		return usuario;
