@@ -18,3 +18,9 @@ spring:
    authentication-database: admin
    uri: ${MONGO_DB_URI:mongodb+srv://helpDesk:help-desk-user@wakandadev.cjsar7m.mongodb.net/helpDeskDB?retryWrites=true&w=majority}
    auto-index-creation: true  
+
+springdoc:
+ openapi:
+  title: Úsuario API
+  description: MicroServiço de Úsuario
+  version: 1.0.0
