@@ -50,7 +50,7 @@ public interface UsuarioAPI {
 	@Operation(summary = "Busca úsuario por id")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Úsuario encontrado"),
-			@ApiResponse(responseCode = "204", description = "Úsuario não encontrado",
+			@ApiResponse(responseCode = "404", description = "Úsuario não encontrado",
 					content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
 			@ApiResponse(responseCode = "500", description = "Internal server error",
 					content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
@@ -77,7 +77,7 @@ public interface UsuarioAPI {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Úsuario atualizado",
 					content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = UsuarioResponse.class))),
-			@ApiResponse(responseCode = "204", description = "Úsuario não encontrado",
+			@ApiResponse(responseCode = "404", description = "Úsuario não encontrado",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
 			@ApiResponse(responseCode = "500", description = "Internal server error",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
