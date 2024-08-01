@@ -1,4 +1,4 @@
-package com.github.joanersoncosta.apiusuario.credencial;
+package com.github.joanersoncosta.apiusuario.credencial.domain;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;

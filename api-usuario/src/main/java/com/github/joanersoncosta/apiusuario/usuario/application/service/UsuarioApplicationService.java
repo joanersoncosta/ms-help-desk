@@ -5,7 +5,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
@@ -31,8 +30,7 @@ public class UsuarioApplicationService implements UsuarioService {
 	public UsuarioNovoResponse criaNovoUsuario(UsuarioNovoRequest usuarioRequest) {
 		log.debug("[start] UsuarioApplicationService - criaNovoUsuario");
 		log.debug("[usuarioRequest] {}", usuarioRequest.toString());
-		Usuario usuario = usuarioRepository.salva(usuarioMapper.converteUsuarioRequest(usuarioRequest)
-				.withSenha(new BCryptPasswordEncoder().encode(usuarioRequest.senha())));
+		Usuario usuario = usuarioRepository.salva(usuarioMapper.converteUsuarioRequest(usuarioRequest));
 		log.debug("[finish] UsuarioApplicationService - criaNovoUsuario");
 		return new UsuarioNovoResponse(usuario);
 	}

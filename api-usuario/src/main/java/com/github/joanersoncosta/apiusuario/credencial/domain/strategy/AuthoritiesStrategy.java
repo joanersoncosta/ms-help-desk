@@ -1,4 +1,4 @@
-package com.github.joanersoncosta.apiusuario.credencial.strategy;
+package com.github.joanersoncosta.apiusuario.credencial.domain.strategy;
 
 import java.util.Collection;
 

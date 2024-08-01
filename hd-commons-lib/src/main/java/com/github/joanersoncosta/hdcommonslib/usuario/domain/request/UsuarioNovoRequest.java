@@ -1,8 +1,6 @@
 package com.github.joanersoncosta.hdcommonslib.usuario.domain.request;
 
-import java.util.Set;
-
-import com.github.joanersoncosta.hdcommonslib.usuario.enuns.PerfilUsuario;
+import java.io.Serializable;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -25,5 +23,6 @@ public record UsuarioNovoRequest(
 		@Size(min = 4, max = 6, message = "A senha deve ter entre 4 e 6 dígitos.")
 		String senha,
 		@Schema(description = "Este são os perfis do úsuario", example = "[\"ADMIN\", \"COMUM\"], , \"TECNICO\"]")
-		Set<PerfilUsuario> perfil) {
+		String perfil) implements Serializable{
+	private static final long serialVersionUID = 1L;
 }

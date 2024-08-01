@@ -1,4 +1,4 @@
-package com.github.joanersoncosta.apiusuario.credencial;
+package com.github.joanersoncosta.apiusuario.credencial.domain;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.github.joanersoncosta.apiusuario.credencial.strategy.AuthorityUsuario;
+import com.github.joanersoncosta.apiusuario.credencial.domain.strategy.AuthorityUsuario;
 import com.github.joanersoncosta.hdcommonslib.handler.APIException;
 
 import jakarta.validation.constraints.NotNull;
