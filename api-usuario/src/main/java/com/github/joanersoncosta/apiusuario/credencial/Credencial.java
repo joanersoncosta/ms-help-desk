@@ -1,7 +1,6 @@
 package com.github.joanersoncosta.apiusuario.credencial;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -9,9 +8,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.github.joanersoncosta.apiusuario.credencial.strategy.AuthorityUsuario;
 import com.github.joanersoncosta.hdcommonslib.handler.APIException;
 
 import jakarta.validation.constraints.NotNull;
@@ -59,14 +58,7 @@ public class Credencial implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		if (perfil.getNome().equals("ADMIN")) {
-			return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_TECNICO"),
-					new SimpleGrantedAuthority("ROLE_COMUM"));
-		} else if (perfil.getNome().equals("TECNICO")) {
-			return List.of(new SimpleGrantedAuthority("ROLE_COMUM"), new SimpleGrantedAuthority("ROLE_TECNICO"));
-		} else {
-			return List.of(new SimpleGrantedAuthority("ROLE_COMUM"));
-		}
+		return AuthorityUsuario.getAuthorities(this.perfil.getNome());
 	}
 
 	@Override
