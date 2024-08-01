@@ -21,9 +21,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequiredArgsConstructor
 public class TokenService {
-    @Value("${e-commerce.jwt.expiracao}")
+    @Value("${api-security.jwt.expiracao}")
     private String expiracao;
-    @Value("${e-commerce.jwt.chave}")
+    @Value("${api-security.jwt.chave}")
     private String chave;
     
     public String gerarToken(org.springframework.security.core.Authentication authentication) {
