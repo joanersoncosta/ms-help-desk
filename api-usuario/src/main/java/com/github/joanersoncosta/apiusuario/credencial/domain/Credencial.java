@@ -44,11 +44,11 @@ public class Credencial implements UserDetails {
 	@Getter
 	private boolean validado;
 
-	public Credencial(String usuario, String senha, Perfil perfil) {
+	public Credencial(String usuario, String senha, String perfil) {
 		this.idCredencial = UUID.randomUUID();
 		this.usuario = usuario;
 		this.senha = senha;
-		this.perfil = perfil;
+		this.perfil = new Perfil(perfil);
 		this.validado = true;
 	}
 

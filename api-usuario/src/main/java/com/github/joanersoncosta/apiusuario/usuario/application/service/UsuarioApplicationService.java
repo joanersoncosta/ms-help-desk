@@ -5,8 +5,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.github.joanersoncosta.apiusuario.credencial.application.service.CredencialService;
+import com.github.joanersoncosta.apiusuario.credencial.domain.CredencialRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
 import com.github.joanersoncosta.apiusuario.usuario.application.repository.UsuarioRepository;
 import com.github.joanersoncosta.apiusuario.usuario.application.service.mapper.UsuarioMapper;
@@ -25,12 +28,14 @@ import lombok.extern.log4j.Log4j2;
 public class UsuarioApplicationService implements UsuarioService {
 	private final UsuarioRepository usuarioRepository;
 	private final UsuarioMapper usuarioMapper;
+	private final CredencialService credencialService;
 
 	@Override
 	public UsuarioNovoResponse criaNovoUsuario(UsuarioNovoRequest usuarioRequest) {
 		log.debug("[start] UsuarioApplicationService - criaNovoUsuario");
 		log.debug("[usuarioRequest] {}", usuarioRequest.toString());
 		Usuario usuario = usuarioRepository.salva(usuarioMapper.converteUsuarioRequest(usuarioRequest));
+		credencialService.criaNovaCredencial(new CredencialRequest(usuarioRequest.withSenha(new BCryptPasswordEncoder().encode(usuarioRequest.senha()))));
 		log.debug("[finish] UsuarioApplicationService - criaNovoUsuario");
 		return new UsuarioNovoResponse(usuario);
 	}
