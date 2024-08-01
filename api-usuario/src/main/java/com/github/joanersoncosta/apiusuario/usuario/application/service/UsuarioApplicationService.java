@@ -1,16 +1,20 @@
 package com.github.joanersoncosta.apiusuario.usuario.application.service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
 import com.github.joanersoncosta.apiusuario.usuario.application.repository.UsuarioRepository;
 import com.github.joanersoncosta.apiusuario.usuario.application.service.mapper.UsuarioMapper;
 import com.github.joanersoncosta.apiusuario.usuario.domain.Usuario;
 import com.github.joanersoncosta.hdcommonslib.handler.APIException;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -27,7 +31,8 @@ public class UsuarioApplicationService implements UsuarioService {
 	public UsuarioNovoResponse criaNovoUsuario(UsuarioNovoRequest usuarioRequest) {
 		log.debug("[start] UsuarioApplicationService - criaNovoUsuario");
 		log.debug("[usuarioRequest] {}", usuarioRequest.toString());
-		Usuario usuario = usuarioRepository.salva(new Usuario(usuarioRequest));
+		Usuario usuario = usuarioRepository.salva(usuarioMapper.converteUsuarioRequest(usuarioRequest)
+				.withSenha(new BCryptPasswordEncoder().encode(usuarioRequest.senha())));
 		log.debug("[finish] UsuarioApplicationService - criaNovoUsuario");
 		return new UsuarioNovoResponse(usuario);
 	}
@@ -43,8 +48,7 @@ public class UsuarioApplicationService implements UsuarioService {
 
 	private UsuarioResponse detalhaUsuarioResponse(UUID idUsuario) {
 		log.debug("[start] UsuarioApplicationService - detalhaUsuarioResponse");
-		UsuarioResponse usuarioResponse = usuarioMapper
-				.converteUsuarioResponse(detalhaUsuario(idUsuario));
+		UsuarioResponse usuarioResponse = usuarioMapper.converteUsuarioResponse(detalhaUsuario(idUsuario));
 		log.debug("[finish] UsuarioApplicationService - detalhaUsuarioResponse");
 		return usuarioResponse;
 	}
@@ -55,5 +59,26 @@ public class UsuarioApplicationService implements UsuarioService {
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Úsuario não encontrado!"));
 		log.debug("[finish] UsuarioApplicationService - detalhaUsuarioResponse");
 		return usuario;
+	}
+
+	@Override
+	public List<UsuarioResponse> buscaTodosOsUsuarios() {
+		log.debug("[start] UsuarioApplicationService - buscaTodosOsUsuarios");
+		List<Usuario> usuarios = usuarioRepository.buscaTodosOsUsuarios();
+		List<UsuarioResponse> usuariosResponse = usuarios.stream()
+				.map(usuario -> usuarioMapper.converteUsuarioResponse(usuario)).collect(Collectors.toList());
+		log.debug("[finish] UsuarioApplicationService - buscaTodosOsUsuarios");
+		return usuariosResponse;
+	}
+
+	@Override
+	public UsuarioResponse atualizaDadosDoUsuario(UUID idUsuario, AtualizaUsuarioRequest usuarioRequest) {
+		log.debug("[start] UsuarioApplicationService - atualizaDadosDoUsuario");
+		Usuario  usuario = detalhaUsuario(idUsuario);
+		usuarioRepository.validaDadosDoUsuario(usuario.getIdUsuario(), usuarioRequest.email());
+		usuario.editaDados(usuarioRequest);
+		usuarioRepository.salva(usuario);
+		log.debug("[finish] UsuarioApplicationService - atualizaDadosDoUsuario");
+		return usuarioMapper.converteUsuarioResponse(usuario);
 	}
 }

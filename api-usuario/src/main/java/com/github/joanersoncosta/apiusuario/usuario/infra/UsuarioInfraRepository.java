@@ -1,5 +1,6 @@
 package com.github.joanersoncosta.apiusuario.usuario.infra;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -38,5 +39,24 @@ public class UsuarioInfraRepository implements UsuarioRepository {
 		Optional<Usuario> usuario = usuarioSpringMongoDBRepository.findById(idUsuario);
 		log.debug("[finish] UsuarioInfraRepository - buscaUsuarioPorId");
 		return usuario;
+	}
+
+	@Override
+	public List<Usuario> buscaTodosOsUsuarios() {
+		log.debug("[start] UsuarioInfraRepository - buscaTodosOsUsuarios");
+		List<Usuario> usuarios = usuarioSpringMongoDBRepository.findAll();
+		log.debug("[finish] UsuarioInfraRepository - buscaTodosOsUsuarios");
+		return usuarios;
+	}
+
+	@Override
+	public void validaDadosDoUsuario(UUID idUsuario, String email) {
+		log.debug("[start] UsuarioInfraRepository - validaDadosDoUsuario");
+		usuarioSpringMongoDBRepository.findByEmail(email)
+				.filter(usarioEmail -> !usarioEmail.getIdUsuario().equals(idUsuario))
+				.ifPresent(usuarioExistente -> {
+					throw APIException.build(HttpStatus.BAD_REQUEST, "Úsuario já cadastrado.");
+				});
+		log.debug("[finish] UsuarioInfraRepository - validaDadosDoUsuario");
 	}
 }

@@ -80,6 +80,10 @@
 			<version>1.4.2.Final</version> <!-- Versão atualizada do MapStruct -->
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

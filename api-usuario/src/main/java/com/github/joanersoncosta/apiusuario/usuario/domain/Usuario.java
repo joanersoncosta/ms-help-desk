@@ -7,7 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.hdcommonslib.usuario.enuns.PerfilUsuario;
 
 import lombok.AccessLevel;
@@ -38,6 +39,12 @@ public class Usuario {
 		this.nome = usuarioRequest.nome();
 		this.email = usuarioRequest.email();
 		this.senha = usuarioRequest.senha();
+		this.perfil = usuarioRequest.perfil();
+	}
+
+	public void editaDados(AtualizaUsuarioRequest usuarioRequest) {
+		this.nome = usuarioRequest.nome();
+		this.email = usuarioRequest.email();
 		this.perfil = usuarioRequest.perfil();
 	}
 }
