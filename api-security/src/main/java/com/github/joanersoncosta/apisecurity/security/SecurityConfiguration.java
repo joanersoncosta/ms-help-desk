@@ -1,5 +1,7 @@
 package com.github.joanersoncosta.apisecurity.security;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -53,7 +55,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	                        authorize -> authorize
 	                                .antMatchers(AuthUrlMapping.PERMIT_ALL.getUrls()).permitAll()
 	                                .anyRequest().authenticated()
-	                ).addFilterBefore(new FiltroToken(tokenService, credencialService), UsernamePasswordAuthenticationFilter.class);
+	                ).exceptionHandling(exceptionHandling -> exceptionHandling
+	                        .authenticationEntryPoint((request, response, authException) ->
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED)
+                    )
+                    .accessDeniedHandler((request, response, accessDeniedException) ->
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN)
+                    )
+            ).addFilterBefore(new FiltroToken(tokenService, credencialService), UsernamePasswordAuthenticationFilter.class);
 	}
 	
 	@Override

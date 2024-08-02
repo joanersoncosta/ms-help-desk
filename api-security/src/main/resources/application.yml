@@ -14,5 +14,5 @@ springdoc:
 
 api-security:    
   jwt:
-    expiracao: ${JWT_TEMPO_EXPIRACAO:15}
-    chave: ${JWT_CHAVE:123456}     
+    expiracao: 15
+    chave: 123456     

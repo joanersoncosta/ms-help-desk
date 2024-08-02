@@ -34,7 +34,7 @@ public class UsuarioApplicationService implements UsuarioService {
 	public UsuarioNovoResponse criaNovoUsuario(UsuarioNovoRequest usuarioRequest) {
 		log.debug("[start] UsuarioApplicationService - criaNovoUsuario");
 		log.debug("[usuarioRequest] {}", usuarioRequest.toString());
-		Usuario usuario = usuarioRepository.salva(usuarioMapper.converteUsuarioRequest(usuarioRequest));
+		Usuario usuario = usuarioRepository.salva(new Usuario(usuarioRequest));
 		credencialService.criaNovaCredencial(new CredencialRequest(usuarioRequest.withSenha(new BCryptPasswordEncoder().encode(usuarioRequest.senha()))));
 		log.debug("[finish] UsuarioApplicationService - criaNovoUsuario");
 		return new UsuarioNovoResponse(usuario);
