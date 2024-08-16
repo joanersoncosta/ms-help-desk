@@ -6,8 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

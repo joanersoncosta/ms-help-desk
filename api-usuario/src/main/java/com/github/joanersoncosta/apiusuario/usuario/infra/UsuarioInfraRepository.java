@@ -8,9 +8,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import com.github.joanersoncosta.apiusuario.handler.APIException;
 import com.github.joanersoncosta.apiusuario.usuario.application.repository.UsuarioRepository;
 import com.github.joanersoncosta.apiusuario.usuario.domain.Usuario;
-import com.github.joanersoncosta.hdcommonslib.handler.APIException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

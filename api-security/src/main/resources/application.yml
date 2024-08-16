@@ -1,18 +1,3 @@
 spring:
  application:
   name: api-security
-
- data:
-  mongodb:
-   authentication-database: admin
-   uri: ${MONGO_DB_URI:mongodb+srv://helpDesk:help-desk-user@wakandadev.cjsar7m.mongodb.net/helpDeskDB?retryWrites=true&w=majority}
-   auto-index-creation: true 
-   
-springdoc:
-  swagger-ui:
-    path: /public/swagger
-
-api-security:    
-  jwt:
-    expiracao: 15
-    chave: 123456     

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.joanersoncosta.apisecurity.autenticacao.application.api.request.AutenticacaoRequest;
 import com.github.joanersoncosta.apisecurity.autenticacao.application.api.response.TokenResponse;
 import com.github.joanersoncosta.apisecurity.autenticacao.application.service.AutenticacaoService;
+import com.github.joanersoncosta.apisecurity.handler.APIException;
 import com.github.joanersoncosta.apisecurity.security.domain.ValidaConteudoAuthorizationHeader;
-import com.github.joanersoncosta.hdcommonslib.handler.APIException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

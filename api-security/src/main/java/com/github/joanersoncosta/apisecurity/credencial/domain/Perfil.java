@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.enuns.PerfilUsuario;
+import com.github.joanersoncosta.apisecurity.credencial.domain.ununs.PerfilUsuario;
 
 import lombok.AccessLevel;
 import lombok.Getter;

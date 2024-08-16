@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.joanersoncosta.apisecurity.credencial.application.repository.CredencialRepository;
 import com.github.joanersoncosta.apisecurity.credencial.domain.CredencialDetails;
-import com.github.joanersoncosta.hdcommonslib.handler.APIException;
+import com.github.joanersoncosta.apisecurity.handler.APIException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

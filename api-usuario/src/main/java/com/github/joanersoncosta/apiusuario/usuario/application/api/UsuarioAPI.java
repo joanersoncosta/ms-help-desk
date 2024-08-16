@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.joanersoncosta.apiusuario.handler.ErrorApiResponse;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
-import com.github.joanersoncosta.hdcommonslib.handler.ErrorApiResponse;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

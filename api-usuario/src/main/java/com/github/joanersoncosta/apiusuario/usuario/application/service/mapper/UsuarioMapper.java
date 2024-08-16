@@ -6,10 +6,10 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioResponse;
 import com.github.joanersoncosta.apiusuario.usuario.domain.Usuario;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
 public interface UsuarioMapper {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.joanersoncosta.apisecurity.autenticacao.application.api.request.AutenticacaoRequest;
 import com.github.joanersoncosta.apisecurity.autenticacao.application.api.response.TokenResponse;
-import com.github.joanersoncosta.hdcommonslib.handler.ErrorApiResponse;
+import com.github.joanersoncosta.apisecurity.handler.ErrorApiResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

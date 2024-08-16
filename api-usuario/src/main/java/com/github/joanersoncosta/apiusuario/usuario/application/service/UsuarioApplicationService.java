@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.github.joanersoncosta.apiusuario.credencial.application.service.CredencialService;
 import com.github.joanersoncosta.apiusuario.credencial.domain.CredencialRequest;
+import com.github.joanersoncosta.apiusuario.handler.APIException;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.AtualizaUsuarioRequest;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.request.UsuarioNovoRequest;
 import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioNovoResponse;
+import com.github.joanersoncosta.apiusuario.usuario.application.api.response.UsuarioResponse;
 import com.github.joanersoncosta.apiusuario.usuario.application.repository.UsuarioRepository;
 import com.github.joanersoncosta.apiusuario.usuario.application.service.mapper.UsuarioMapper;
 import com.github.joanersoncosta.apiusuario.usuario.domain.Usuario;
-import com.github.joanersoncosta.hdcommonslib.handler.APIException;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.AtualizaUsuarioRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.request.UsuarioNovoRequest;
-import com.github.joanersoncosta.hdcommonslib.usuario.domain.response.UsuarioResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -48,6 +48,7 @@ public class UsuarioApplicationService implements UsuarioService {
 		log.debug("[finish] UsuarioApplicationService - buscaUsuarioPorId");
 		return usuarioResponse;
 	}
+	
 
 	private UsuarioResponse detalhaUsuarioResponse(UUID idUsuario) {
 		log.debug("[start] UsuarioApplicationService - detalhaUsuarioResponse");
