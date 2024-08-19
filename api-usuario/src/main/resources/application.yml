@@ -1,3 +1,5 @@
 spring:
  application:
   name: api-usuario
+ profiles:
+  active: ${PROFILE_ACTIVE:dev}    

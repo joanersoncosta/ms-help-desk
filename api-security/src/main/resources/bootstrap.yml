@@ -1,8 +1,4 @@
 spring:
- application:
-  name: api-security
  cloud:
   config:
    uri: ${CONFIG_URI:http://localhost:8888}
-   profile: dev
-   label: main   

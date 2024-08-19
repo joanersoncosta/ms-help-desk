@@ -1,0 +1,5 @@
+spring:
+ application:
+  name: api-ordem
+ profiles:
+    active: ${PROFILE_ACTIVE:dev}  
