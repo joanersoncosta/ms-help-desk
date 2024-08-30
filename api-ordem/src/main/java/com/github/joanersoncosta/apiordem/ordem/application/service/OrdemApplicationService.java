@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
-import com.github.joanersoncosta.apiordem.ordem.application.service.mapper.OrdemMapper;
 import com.github.joanersoncosta.apiordem.ordem.domain.Ordem;
+import com.github.joanersoncosta.apiordem.ordem.domain.OrdemMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

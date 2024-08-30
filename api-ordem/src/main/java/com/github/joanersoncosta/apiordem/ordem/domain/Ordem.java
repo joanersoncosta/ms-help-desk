@@ -43,18 +43,18 @@ public class Ordem implements Serializable{
 	@Column(nullable = false, length = 50)
 	private String titlo;
 	@Column(nullable = false, length = 1000)
-	private String desccricao;
+	private String descricao;
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private OrdemStatus ordemStatus;
 	private LocalDateTime dataCriacao;
-	private LocalDateTime datafechamento;
+	private LocalDateTime dataFechamento;
 	
 	public Ordem(NovaOrdemRequest novaOrdemRequest) {
 		this.requestId = novaOrdemRequest.requestId();
 		this.idCliente = novaOrdemRequest.idCliente();
 		this.titlo = novaOrdemRequest.titlo();
-		this.desccricao = novaOrdemRequest.descricao();
+		this.descricao = novaOrdemRequest.descricao();
 		this.ordemStatus = OrdemStatus.ABERTO;
 		this.dataCriacao = LocalDateTime.now();
 	}
