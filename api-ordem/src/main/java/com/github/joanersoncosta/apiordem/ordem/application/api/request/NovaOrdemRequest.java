@@ -22,9 +22,6 @@ public record NovaOrdemRequest(
 		@Schema(description = "Descricao da ordem", example = "")
 		@NotBlank(message = "descricao não pode ser nulo ou em branco.")
 		@Size(min = 3, max = 1000, message = "idCliente pode ter entre 3 e 1000 characters.")
-		String descricao,
-		@Schema(description = "Status da ordem", example = "Open")
-		@NotBlank(message = "Titlo não pode ser nulo ou em branco.")
-		@Size(min = 4, max = 15, message = "ordemStatus pode ter entre 4 e 15 characters.")
-		String ordemStatus) {
+		String descricao
+		) {
 }

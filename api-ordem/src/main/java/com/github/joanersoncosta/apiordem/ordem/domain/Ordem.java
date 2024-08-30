@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.domain.enuns.OrdemStatus;
 
 import jakarta.persistence.Column;
@@ -15,15 +16,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@Builder
 @ToString
 @Getter
 @EqualsAndHashCode(of = "idOrdem")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 public class Ordem implements Serializable{
 	@Serial
@@ -44,4 +49,14 @@ public class Ordem implements Serializable{
 	private OrdemStatus ordemStatus;
 	private LocalDateTime dataCriacao;
 	private LocalDateTime datafechamento;
+	
+	public Ordem(NovaOrdemRequest novaOrdemRequest) {
+		this.requestId = novaOrdemRequest.requestId();
+		this.idCliente = novaOrdemRequest.idCliente();
+		this.titlo = novaOrdemRequest.titlo();
+		this.desccricao = novaOrdemRequest.descricao();
+		this.ordemStatus = OrdemStatus.ABERTO;
+		this.dataCriacao = LocalDateTime.now();
+	}
+	
 }

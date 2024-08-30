@@ -18,7 +18,7 @@ public enum OrdemStatus {
 	CANCELADO("Cancelado");
 	
 	@Getter
-	private final String descricao;
+	private String descricao;
 	
 	public static OrdemStatus toEnum(String desccricao) {
 		return Arrays.stream(OrdemStatus.values())
