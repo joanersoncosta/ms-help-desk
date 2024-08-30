@@ -1,42 +1,24 @@
-2024-08-19T15:58:09.018-03:00  INFO 9272 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
-2024-08-19T15:58:18.436-03:00  WARN 9272 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: None of labels [main] found
-2024-08-19T15:58:18.451-03:00  INFO 9272 --- [main] c.g.j.apiordem.ApiOrdemApplication       : The following 1 profile is active: "-Dspring.profiles.active=dev"
-2024-08-19T15:58:21.202-03:00  INFO 9272 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-19T15:58:21.371-03:00  INFO 9272 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 1 JPA repository interfaces.
-2024-08-19T15:58:21.940-03:00  INFO 9272 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dab81e80-e82a-3700-89f9-956b949b6ecd
-2024-08-19T15:58:23.408-03:00  INFO 9272 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8100 (http)
-2024-08-19T15:58:23.457-03:00  INFO 9272 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-19T15:58:23.458-03:00  INFO 9272 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
-2024-08-19T15:58:24.383-03:00  INFO 9272 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2024-08-19T15:58:24.384-03:00  INFO 9272 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5811 ms
-2024-08-19T15:58:25.003-03:00  INFO 9272 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-19T15:58:25.296-03:00  INFO 9272 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2024-08-19T15:58:28.687-03:00  INFO 9272 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-19T15:58:31.401-03:00  INFO 9272 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70805849
-2024-08-19T15:58:31.485-03:00  INFO 9272 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-19T15:58:31.701-03:00  INFO 9272 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-19T15:58:31.750-03:00  WARN 9272 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-08-19T15:59:03.553-03:00  INFO 12380 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
-2024-08-19T15:59:09.069-03:00  WARN 12380 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: None of labels [main] found
-2024-08-19T15:59:09.076-03:00  INFO 12380 --- [main] c.g.j.apiordem.ApiOrdemApplication       : The following 1 profile is active: "-Dspring.profiles.active=dev"
-2024-08-19T15:59:12.154-03:00  INFO 12380 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-19T15:59:12.303-03:00  INFO 12380 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123 ms. Found 1 JPA repository interfaces.
-2024-08-19T15:59:13.091-03:00  INFO 12380 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=dab81e80-e82a-3700-89f9-956b949b6ecd
-2024-08-19T15:59:15.059-03:00  INFO 12380 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8100 (http)
-2024-08-19T15:59:15.096-03:00  INFO 12380 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-19T15:59:15.097-03:00  INFO 12380 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
-2024-08-19T15:59:15.939-03:00  INFO 12380 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
-2024-08-19T15:59:15.943-03:00  INFO 12380 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6831 ms
-2024-08-19T15:59:16.657-03:00  INFO 12380 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-19T15:59:16.784-03:00  INFO 12380 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
-2024-08-19T15:59:17.738-03:00  INFO 12380 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-19T15:59:18.502-03:00  INFO 12380 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58583a2d
-2024-08-19T15:59:18.511-03:00  INFO 12380 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-19T15:59:18.588-03:00  INFO 12380 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-19T15:59:18.592-03:00  WARN 12380 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-08-19T15:59:20.832-03:00  WARN 12380 --- [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table ordem (id_ordem uuid not null, data_criacao datetime(6), datafechamento datetime(6), desccricao varchar(1000) not null, id_cliente binary(16), request_id binary(45) not null, titlo varchar(50) not null, primary key (id_ordem)) engine=InnoDB" via JDBC Statement
+2024-08-30T16:10:20.039-03:00  INFO 12832 --- [main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888
+2024-08-30T16:10:21.113-03:00  INFO 12832 --- [main] c.c.c.ConfigServicePropertySourceLocator : Exception on Url - http://localhost:8888:org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:8888/api-ordem/dev/main": Connection refused: no further information. Will be trying the next url if available
+2024-08-30T16:10:21.116-03:00  WARN 12832 --- [main] c.c.c.ConfigServicePropertySourceLocator : Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/api-ordem/dev/main": Connection refused: no further information
+2024-08-30T16:10:21.234-03:00  INFO 12832 --- [main] c.g.j.apiordem.ApiOrdemApplication       : The following 1 profile is active: "-Dspring.profiles.active=dev"
+2024-08-30T16:10:23.554-03:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-30T16:10:23.651-03:00  INFO 12832 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 1 JPA repository interfaces.
+2024-08-30T16:10:23.958-03:00  INFO 12832 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=244e7205-8eaa-3015-b13b-3bced9d80487
+2024-08-30T16:10:24.719-03:00  INFO 12832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8100 (http)
+2024-08-30T16:10:24.746-03:00  INFO 12832 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-30T16:10:24.749-03:00  INFO 12832 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-08-30T16:10:25.027-03:00  INFO 12832 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-08-30T16:10:25.030-03:00  INFO 12832 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3219 ms
+2024-08-30T16:10:25.375-03:00  INFO 12832 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-30T16:10:25.513-03:00  INFO 12832 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2024-08-30T16:10:26.142-03:00  INFO 12832 --- [main] com.zaxxer.hikari.HikariDataSource       : SpringBootJPAHikariCP - Starting...
+2024-08-30T16:10:26.567-03:00  INFO 12832 --- [main] com.zaxxer.hikari.pool.HikariPool        : SpringBootJPAHikariCP - Added connection org.postgresql.jdbc.PgConnection@6cd66f6a
+2024-08-30T16:10:26.577-03:00  INFO 12832 --- [main] com.zaxxer.hikari.HikariDataSource       : SpringBootJPAHikariCP - Start completed.
+2024-08-30T16:10:26.659-03:00  INFO 12832 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2024-08-30T16:10:30.489-03:00  WARN 12832 --- [main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table Ordem (idOrdem uuid not null, dataCriacao timestamp(6), datafechamento timestamp(6), desccricao varchar(1000) not null, idCliente uuid, ordemStatus varchar(255) not null, requestId uuid not null, titlo varchar(50) not null, primary key (idOrdem))" via JDBC Statement
 
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table ordem (id_ordem uuid not null, data_criacao datetime(6), datafechamento datetime(6), desccricao varchar(1000) not null, id_cliente binary(16), request_id binary(45) not null, titlo varchar(50) not null, primary key (id_ordem)) engine=InnoDB" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table Ordem (idOrdem uuid not null, dataCriacao timestamp(6), datafechamento timestamp(6), desccricao varchar(1000) not null, idCliente uuid, ordemStatus varchar(255) not null, requestId uuid not null, titlo varchar(50) not null, primary key (idOrdem))" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:587) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:532) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
@@ -74,23 +56,29 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "c
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304) ~[spring-boot-3.0.9.jar:3.0.9]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293) ~[spring-boot-3.0.9.jar:3.0.9]
 	at com.github.joanersoncosta.apiordem.ApiOrdemApplication.main(ApiOrdemApplication.java:10) ~[classes/:na]
-Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid not null, data_criacao datetime(6), datafechamento datetime(6), desccricao ' at line 1
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.33.jar:8.0.33]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+Caused by: org.postgresql.util.PSQLException: ERROR: no schema has been selected to create in
+  Posição: 14
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2676) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2366) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:356) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:496) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:413) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:333) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:319) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:295) ~[postgresql-42.5.4.jar:42.5.4]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:290) ~[postgresql-42.5.4.jar:42.5.4]
 	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:na]
 	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:na]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-6.1.7.Final.jar:6.1.7.Final]
 	... 36 common frames omitted
 
-2024-08-19T15:59:20.842-03:00  INFO 12380 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-19T15:59:20.874-03:00  INFO 12380 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-19T15:59:21.255-03:00  WARN 12380 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-08-19T15:59:25.957-03:00  INFO 12380 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8100 (http) with context path '/api'
-2024-08-19T15:59:26.170-03:00  INFO 12380 --- [main] c.g.j.apiordem.ApiOrdemApplication       : Started ApiOrdemApplication in 26.969 seconds (process running for 30.137)
-2024-08-19T16:01:33.594-03:00  INFO 12380 --- [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2024-08-19T16:01:33.634-03:00  INFO 12380 --- [RMI TCP Connection(11)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-19T16:01:33.679-03:00  INFO 12380 --- [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-08-19T16:01:33.716-03:00  INFO 12380 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-19T16:01:33.830-03:00  INFO 12380 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-30T16:10:30.499-03:00  INFO 12832 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-30T16:10:30.533-03:00  INFO 12832 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-30T16:10:31.178-03:00  WARN 12832 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-30T16:10:37.424-03:00  INFO 12832 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8100 (http) with context path '/api'
+2024-08-30T16:10:37.658-03:00  INFO 12832 --- [main] c.g.j.apiordem.ApiOrdemApplication       : Started ApiOrdemApplication in 20.512 seconds (process running for 23.031)
+2024-08-30T16:11:24.992-03:00  INFO 12832 --- [RMI TCP Connection(6)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-08-30T16:11:25.048-03:00  INFO 12832 --- [RMI TCP Connection(6)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-30T16:11:25.095-03:00  INFO 12832 --- [RMI TCP Connection(6)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-30T16:11:25.102-03:00  INFO 12832 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : SpringBootJPAHikariCP - Shutdown initiated...
+2024-08-30T16:11:25.175-03:00  INFO 12832 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : SpringBootJPAHikariCP - Shutdown completed.
