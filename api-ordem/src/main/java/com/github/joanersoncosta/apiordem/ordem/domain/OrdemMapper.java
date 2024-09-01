@@ -1,5 +1,7 @@
 package com.github.joanersoncosta.apiordem.ordem.domain;
 
+import java.time.LocalDateTime;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -16,7 +18,7 @@ import com.github.joanersoncosta.apiordem.ordem.domain.enuns.OrdemStatus;
 public interface OrdemMapper {
 	@Mapping(target = "idOrdem", ignore = true)
 	@Mapping(target = "ordemStatus", constant = "ABERTO")
-    @Mapping(target = "dataCriacao", expression = "java(java.time.LocalDateTime.now())")
+    @Mapping(target = "dataCriacao", expression = "java(mapDataCricao())")
     @Mapping(target = "dataFechamento", ignore = true)
 	Ordem fromOrdemRequest(NovaOrdemRequest novaOrdemRequest);
 	@Mapping(source = "idOrdem", target = "idOrdem")
@@ -24,5 +26,8 @@ public interface OrdemMapper {
 	@Named("mapStatus")
 	default OrdemStatus mapStatus(String Aberto) {
 		return OrdemStatus.toEnum(Aberto);
+	}
+	default LocalDateTime mapDataCricao() {
+		return LocalDateTime.now();
 	}
 }
