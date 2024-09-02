@@ -50,4 +50,13 @@ public class OrdemApplicationService implements OrdemService {
 		return ordemMapper.fromOrdemResponse(ordem);
 	}
 
+	@Override
+	public void deletaOrdemPorId(UUID idOrdem) {
+		log.debug("[start] OrdemApplicationService - deletaOrdemPorId");
+		log.debug("[idOrdem] {}", idOrdem);
+		Ordem ordem = ordemRepository.buscaOrdemPorId(idOrdem);
+		ordemRepository.deletaOrdem(ordem);
+		log.debug("[finish] OrdemApplicationService - deletaOrdemPorId");
+	}
+
 }

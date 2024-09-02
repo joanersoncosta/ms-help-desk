@@ -35,4 +35,11 @@ public class OrdemInfraRepository implements OrdemRepository{
 		return ordem;
 	}
 
+	@Override
+	public void deletaOrdem(Ordem ordem) {
+		log.debug("[start] OrdemInfraRepository - deletaOrdem");
+		ordemSpringJpaInfraRepository.delete(ordem);
+		log.debug("[finish] OrdemInfraRepository - deletaOrdem");
+	}
+
 }

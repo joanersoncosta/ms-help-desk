@@ -42,4 +42,11 @@ public class OrdemRestController implements OrdemAPI {
 		return ordemResponse;
 	}
 
+	@Override
+	public void deletaOrdemPorId(UUID idOrdem) {
+		log.debug("[start] OrdemRestController - deletaOrdemPorId");
+		ordemService.deletaOrdemPorId(idOrdem);
+		log.debug("[finish] OrdemRestController - deletaOrdemPorId");
+	}
+
 }

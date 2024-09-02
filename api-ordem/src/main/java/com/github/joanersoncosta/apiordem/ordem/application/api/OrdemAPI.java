@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,7 @@ public interface OrdemAPI {
 	@PostMapping
 	NovaOrdemReIdsponse criaNovaOrdem(@RequestBody @Valid NovaOrdemRequest NovaOrdemRequest);
 
-	@Operation(summary = "Cria nova Ordem")
+	@Operation(summary = "Atualiza Ordem por ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "400", description = "Bad Request",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
@@ -55,12 +56,25 @@ public interface OrdemAPI {
 			@ApiResponse(responseCode = "500", description = "Internal server error",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
 	})
-	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@PutMapping(path = "/{idOrdem}")
 	void atalizaOrdem(@PathVariable(name = "idOrdem") UUID idOrdem, @RequestBody @Valid AtualizaOrdemRequest rdemRequest);
 
-	@Operation(summary = "Cria nova Ordem")
+	@Operation(summary = "Busca ordem por ID")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Retorna Ordem"),
+			@ApiResponse(responseCode = "400", description = "Bad Request",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "404", description = "Not found",
+			content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "500", description = "Internal server error",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
+	})
+	@ResponseStatus(code = HttpStatus.OK)
+	@GetMapping(path = "/{idOrdem}")
+	OrdemResponse buscaOrdemPorId(@PathVariable(name = "idOrdem") UUID idOrdem);
+
+	@Operation(summary = "Deleta Ordem")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "400", description = "Bad Request",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
@@ -69,8 +83,8 @@ public interface OrdemAPI {
 			@ApiResponse(responseCode = "500", description = "Internal server error",
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
 	})
-	@ResponseStatus(code = HttpStatus.CREATED)
-	@GetMapping(path = "/{idOrdem}")
-	OrdemResponse buscaOrdemPorId(@PathVariable(name = "idOrdem") UUID idOrdem);
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@DeleteMapping(path = "/{idOrdem}")
+	void deletaOrdemPorId(@PathVariable(name = "idOrdem") UUID idOrdem);
 
 }
