@@ -10,8 +10,8 @@ public record OrdemResponse(
 		UUID requestId,
 		UUID idCliente,
 		String titlo,
-		String desccricao,
+		String descricao,
 		OrdemStatus ordemStatus,
 		LocalDateTime dataCriacao,
-		LocalDateTime datafechamento) {
+		LocalDateTime dataFechamento) {
 }

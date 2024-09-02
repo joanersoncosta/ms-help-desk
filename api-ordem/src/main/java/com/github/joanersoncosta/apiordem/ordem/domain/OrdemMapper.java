@@ -12,6 +12,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
+import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemResponse;
 import com.github.joanersoncosta.apiordem.ordem.domain.enuns.OrdemStatus;
 
 @Mapper(componentModel = "spring", 
@@ -37,4 +38,5 @@ public interface OrdemMapper {
     @Mapping(target = "dataCriacao", ignore = true)
     @Mapping(target = "dataFechamento", ignore = true)
 	Ordem fromOrdemRequest(@MappingTarget Ordem ordem,  AtualizaOrdemRequest ordemRequest);
+	OrdemResponse fromOrdemResponse(Ordem ordem);
 }

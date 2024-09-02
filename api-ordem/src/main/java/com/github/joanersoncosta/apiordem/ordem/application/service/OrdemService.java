@@ -5,8 +5,10 @@ import java.util.UUID;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
+import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemResponse;
 
 public interface OrdemService {
 	NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest);
 	void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest);
+	OrdemResponse buscaOrdemPorId(UUID idOrdem);
 }

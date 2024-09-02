@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
+import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemResponse;
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
 import com.github.joanersoncosta.apiordem.ordem.domain.Ordem;
 import com.github.joanersoncosta.apiordem.ordem.domain.OrdemMapper;
@@ -38,6 +39,15 @@ public class OrdemApplicationService implements OrdemService {
 		ordem = ordemMapper.fromOrdemRequest(ordem, ordemRequest);
 		ordemRepository.salva(ordem);
 		log.debug("[finish] OrdemApplicationService - atalizaOrdem");
+	}
+
+	@Override
+	public OrdemResponse buscaOrdemPorId(UUID idOrdem) {
+		log.debug("[start] OrdemApplicationService - buscaOrdemPorId");
+		log.debug("[idOrdem] {}", idOrdem);
+		Ordem ordem = ordemRepository.buscaOrdemPorId(idOrdem);
+		log.debug("[finish] OrdemApplicationService - buscaOrdemPorId");
+		return ordemMapper.fromOrdemResponse(ordem);
 	}
 
 }

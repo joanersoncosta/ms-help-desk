@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
+import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemResponse;
 import com.github.joanersoncosta.apiordem.ordem.application.service.OrdemService;
 
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,14 @@ public class OrdemRestController implements OrdemAPI {
 		log.debug("[start] OrdemRestController - atalizaOrdem");
 		ordemService.atalizaOrdem(idOrdem, ordemRequest);
 		log.debug("[finish] OrdemRestController - atalizaOrdem");
+	}
+
+	@Override
+	public OrdemResponse buscaOrdemPorId(UUID idOrdem) {
+		log.debug("[start] OrdemRestController - buscaOrdemPorId");
+		OrdemResponse ordemResponse = ordemService.buscaOrdemPorId(idOrdem);
+		log.debug("[finish] OrdemRestController - buscaOrdemPorId");
+		return ordemResponse;
 	}
 
 }
