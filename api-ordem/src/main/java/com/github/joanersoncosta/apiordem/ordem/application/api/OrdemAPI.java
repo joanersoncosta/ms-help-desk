@@ -1,5 +1,6 @@
 package com.github.joanersoncosta.apiordem.ordem.application.api;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -73,6 +74,20 @@ public interface OrdemAPI {
 	@ResponseStatus(code = HttpStatus.OK)
 	@GetMapping(path = "/{idOrdem}")
 	OrdemResponse buscaOrdemPorId(@PathVariable(name = "idOrdem") UUID idOrdem);
+
+	@Operation(summary = "Lista ordens")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Retorna Ordem"),
+			@ApiResponse(responseCode = "400", description = "Bad Request",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "404", description = "Not found",
+			content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "500", description = "Internal server error",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
+	})
+	@ResponseStatus(code = HttpStatus.OK)
+	@GetMapping(path = "/{idOrdem}")
+	List<OrdemResponse>listaOrdens();
 
 	@Operation(summary = "Deleta Ordem")
 	@ApiResponses(value = {

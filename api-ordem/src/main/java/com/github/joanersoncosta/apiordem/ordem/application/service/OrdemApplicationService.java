@@ -1,5 +1,6 @@
 package com.github.joanersoncosta.apiordem.ordem.application.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -57,6 +58,14 @@ public class OrdemApplicationService implements OrdemService {
 		Ordem ordem = ordemRepository.buscaOrdemPorId(idOrdem);
 		ordemRepository.deletaOrdem(ordem);
 		log.debug("[finish] OrdemApplicationService - deletaOrdemPorId");
+	}
+
+	@Override
+	public List<OrdemResponse> listaOrdens() {
+		log.debug("[start] OrdemApplicationService - listaOrdens");
+		List<Ordem> ordens = ordemRepository.buscaOrdens();
+		log.debug("[finish] OrdemApplicationService - listaOrdens");
+		return ordemMapper.fromOrdemResponse(ordens);
 	}
 
 }

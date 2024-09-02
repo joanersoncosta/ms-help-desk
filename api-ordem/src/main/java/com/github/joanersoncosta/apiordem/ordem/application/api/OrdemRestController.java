@@ -1,5 +1,6 @@
 package com.github.joanersoncosta.apiordem.ordem.application.api;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +48,15 @@ public class OrdemRestController implements OrdemAPI {
 		log.debug("[start] OrdemRestController - deletaOrdemPorId");
 		ordemService.deletaOrdemPorId(idOrdem);
 		log.debug("[finish] OrdemRestController - deletaOrdemPorId");
+	}
+
+	@Override
+	public List<OrdemResponse> listaOrdens() {
+		log.debug("[start] OrdemRestController - listaOrdens");
+		List<OrdemResponse> ordensResponse = ordemService.listaOrdens();
+		log.debug("[finish] OrdemRestController - listaOrdens");
+		return ordensResponse;
+
 	}
 
 }

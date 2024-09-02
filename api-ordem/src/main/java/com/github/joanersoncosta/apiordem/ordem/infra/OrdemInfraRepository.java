@@ -1,5 +1,6 @@
 package com.github.joanersoncosta.apiordem.ordem.infra;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,14 @@ public class OrdemInfraRepository implements OrdemRepository{
 		log.debug("[start] OrdemInfraRepository - deletaOrdem");
 		ordemSpringJpaInfraRepository.delete(ordem);
 		log.debug("[finish] OrdemInfraRepository - deletaOrdem");
+	}
+
+	@Override
+	public List<Ordem> buscaOrdens() {
+		log.debug("[start] OrdemInfraRepository - buscaOrdens");
+		List<Ordem> ordens = ordemSpringJpaInfraRepository.findAll();
+		log.debug("[finish] OrdemInfraRepository - buscaOrdens");
+		return ordens;
 	}
 
 }

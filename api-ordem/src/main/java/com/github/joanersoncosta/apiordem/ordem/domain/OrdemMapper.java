@@ -1,6 +1,7 @@
 package com.github.joanersoncosta.apiordem.ordem.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -39,4 +40,5 @@ public interface OrdemMapper {
     @Mapping(target = "dataFechamento", ignore = true)
 	Ordem fromOrdemRequest(@MappingTarget Ordem ordem,  AtualizaOrdemRequest ordemRequest);
 	OrdemResponse fromOrdemResponse(Ordem ordem);
+	List<OrdemResponse> fromOrdemResponse(List<Ordem> ordens);
 }
