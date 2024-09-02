@@ -1,7 +1,10 @@
 package com.github.joanersoncosta.apiordem.ordem.application.api;
 
+import java.util.UUID;
+
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
 import com.github.joanersoncosta.apiordem.ordem.application.service.OrdemService;
@@ -21,6 +24,13 @@ public class OrdemRestController implements OrdemAPI {
 		NovaOrdemReIdsponse novaOrdemReIdsponse = ordemService.criaNovaOrdem(novaOrdemRequest);
 		log.debug("[finish] OrdemRestController - criaNovaOrdem");
 		return novaOrdemReIdsponse;
+	}
+
+	@Override
+	public void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
+		log.debug("[start] OrdemRestController - atalizaOrdem");
+		ordemService.atalizaOrdem(idOrdem, ordemRequest);
+		log.debug("[finish] OrdemRestController - atalizaOrdem");
 	}
 
 }

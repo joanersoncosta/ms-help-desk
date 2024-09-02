@@ -1,7 +1,11 @@
 package com.github.joanersoncosta.apiordem.ordem.infra;
 
+import java.util.UUID;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import com.github.joanersoncosta.apiordem.handler.APIException;
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
 import com.github.joanersoncosta.apiordem.ordem.domain.Ordem;
 
@@ -20,6 +24,15 @@ public class OrdemInfraRepository implements OrdemRepository{
 		Ordem ordemCriada = ordemSpringJpaInfraRepository.save(ordem);
 		log.debug("[finish] OrdemInfraRepository - salva");
 		return ordemCriada;
+	}
+
+	@Override
+	public Ordem buscaOrdemPorId(UUID idOrdem) {
+		log.debug("[start] OrdemInfraRepository - buscaOrdemPorId");
+		Ordem ordem = ordemSpringJpaInfraRepository.findById(idOrdem)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Ordem não encontrada."));
+		log.debug("[finish] OrdemInfraRepository - buscaOrdemPorId");
+		return ordem;
 	}
 
 }

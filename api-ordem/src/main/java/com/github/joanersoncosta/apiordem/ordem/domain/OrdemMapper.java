@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
 import com.github.joanersoncosta.apiordem.ordem.domain.enuns.OrdemStatus;
@@ -30,4 +32,9 @@ public interface OrdemMapper {
 	default LocalDateTime mapDataCricao() {
 		return LocalDateTime.now();
 	}
+	@Mapping(target = "idOrdem", ignore = true)
+    @Mapping(target = "ordemStatus", ignore = true)
+    @Mapping(target = "dataCriacao", ignore = true)
+    @Mapping(target = "dataFechamento", ignore = true)
+	Ordem fromOrdemRequest(@MappingTarget Ordem ordem,  AtualizaOrdemRequest ordemRequest);
 }

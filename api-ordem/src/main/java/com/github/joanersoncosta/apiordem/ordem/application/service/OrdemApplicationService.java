@@ -1,7 +1,10 @@
 package com.github.joanersoncosta.apiordem.ordem.application.service;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
+import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
@@ -22,9 +25,19 @@ public class OrdemApplicationService implements OrdemService {
 	public NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest) {
 		log.debug("[start] OrdemApplicationService - criaNovaOrdem");
 		log.debug("[novaOrdemRequest] {}", novaOrdemRequest.toString());
-		Ordem ordem = ordemRepository.salva(new Ordem(novaOrdemRequest));
+		Ordem ordem = ordemRepository.salva(ordemMapper.fromOrdemRequest(novaOrdemRequest));
 		log.debug("[finish] OrdemApplicationService - criaNovaOrdem");
 		return ordemMapper.fromIdOrdemResponse(ordem);
+	}
+
+	@Override
+	public void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
+		log.debug("[start] OrdemApplicationService - atalizaOrdem");
+		log.debug("[ordemRequest] {}", ordemRequest.toString());
+		Ordem ordem = ordemRepository.buscaOrdemPorId(idOrdem);
+		ordem = ordemMapper.fromOrdemRequest(ordem, ordemRequest);
+		ordemRepository.salva(ordem);
+		log.debug("[finish] OrdemApplicationService - atalizaOrdem");
 	}
 
 }

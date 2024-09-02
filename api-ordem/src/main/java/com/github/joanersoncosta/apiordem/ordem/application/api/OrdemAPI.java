@@ -1,14 +1,19 @@
 package com.github.joanersoncosta.apiordem.ordem.application.api;
 
+import java.util.UUID;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.joanersoncosta.apiordem.handler.ErrorApiResponse;
+import com.github.joanersoncosta.apiordem.ordem.application.api.request.AtualizaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.request.NovaOrdemRequest;
 import com.github.joanersoncosta.apiordem.ordem.application.api.response.NovaOrdemReIdsponse;
 
@@ -38,5 +43,20 @@ public interface OrdemAPI {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
 	NovaOrdemReIdsponse criaNovaOrdem(@RequestBody @Valid NovaOrdemRequest NovaOrdemRequest);
+
+	@Operation(summary = "Cria nova Ordem")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "201", description = "Ordem criada"),
+			@ApiResponse(responseCode = "400", description = "Bad Request",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "404", description = "Not found",
+			content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class))),
+			@ApiResponse(responseCode = "500", description = "Internal server error",
+				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
+	})
+	
+	@ResponseStatus(code = HttpStatus.CREATED)
+	@PutMapping(path = "/{idOrdem}")
+	void atalizaOrdem(@PathVariable(name = "idOrdem") UUID idOrdem, @RequestBody @Valid AtualizaOrdemRequest rdemRequest);
 
 }
