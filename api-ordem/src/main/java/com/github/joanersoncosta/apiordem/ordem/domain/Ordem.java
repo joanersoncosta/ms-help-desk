@@ -15,6 +15,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,7 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
+@Table(name = "ordem")
 public class Ordem implements Serializable{
 	@Serial
 	private static final long serialVersionUID = 1L;
@@ -39,8 +41,7 @@ public class Ordem implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", updatable = false, unique = true, nullable = false)
     private UUID idOrdem;
-	@Column(nullable = false, length = 45)
-	private UUID requestId;
+	private UUID idRequest;
 	private UUID idCliente;
 	@Column(nullable = false, length = 50)
 	private String titlo;
@@ -53,7 +54,7 @@ public class Ordem implements Serializable{
 	private LocalDateTime dataFechamento;
 	
 	public Ordem(NovaOrdemRequest novaOrdemRequest) {
-		this.requestId = novaOrdemRequest.requestId();
+		this.idRequest = novaOrdemRequest.idRequest();
 		this.idCliente = novaOrdemRequest.idCliente();
 		this.titlo = novaOrdemRequest.titlo();
 		this.descricao = novaOrdemRequest.descricao();

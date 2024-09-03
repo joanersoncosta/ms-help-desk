@@ -22,9 +22,13 @@ public class OrdemInfraRepository implements OrdemRepository{
 	@Override
 	public Ordem salva(Ordem ordem) {
 		log.debug("[start] OrdemInfraRepository - salva");
-		Ordem ordemCriada = ordemSpringJpaInfraRepository.save(ordem);
+		try {
+		ordemSpringJpaInfraRepository.save(ordem);
+		}catch (Exception e) {
+			APIException.build(HttpStatus.BAD_REQUEST, "Erro ao salvar Ordem.", e);
+		}
 		log.debug("[finish] OrdemInfraRepository - salva");
-		return ordemCriada;
+		return ordem;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemRe
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
 import com.github.joanersoncosta.apiordem.ordem.domain.Ordem;
 import com.github.joanersoncosta.apiordem.ordem.domain.OrdemMapper;
+import com.github.joanersoncosta.apiordem.usuario.infra.feign.UsuarioClientFeign;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,24 +23,26 @@ import lombok.extern.log4j.Log4j2;
 public class OrdemApplicationService implements OrdemService {
 	private final OrdemRepository ordemRepository;
 	private final OrdemMapper ordemMapper;
+	private final UsuarioClientFeign usuarioClientFeign;
 	
 	@Override
 	public NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest) {
 		log.debug("[start] OrdemApplicationService - criaNovaOrdem");
 		log.debug("[novaOrdemRequest] {}", novaOrdemRequest.toString());
-		Ordem ordem = ordemRepository.salva(ordemMapper.fromOrdemRequest(novaOrdemRequest));
+		validaUsuarioId(novaOrdemRequest.idCliente());
+		Ordem ordem = ordemRepository.salva(new Ordem(novaOrdemRequest));
 		log.debug("[finish] OrdemApplicationService - criaNovaOrdem");
 		return ordemMapper.fromIdOrdemResponse(ordem);
 	}
 
 	@Override
-	public void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
-		log.debug("[start] OrdemApplicationService - atalizaOrdem");
+	public void atualizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
+		log.debug("[start] OrdemApplicationService - atualizaOrdem");
 		log.debug("[ordemRequest] {}", ordemRequest.toString());
 		Ordem ordem = ordemRepository.buscaOrdemPorId(idOrdem);
 		ordem = ordemMapper.fromOrdemRequest(ordem, ordemRequest);
 		ordemRepository.salva(ordem);
-		log.debug("[finish] OrdemApplicationService - atalizaOrdem");
+		log.debug("[finish] OrdemApplicationService - atualizaOrdem");
 	}
 
 	@Override
@@ -66,6 +69,12 @@ public class OrdemApplicationService implements OrdemService {
 		List<Ordem> ordens = ordemRepository.buscaOrdens();
 		log.debug("[finish] OrdemApplicationService - listaOrdens");
 		return ordemMapper.fromOrdemResponse(ordens);
+	}
+	
+	public void validaUsuarioId(UUID idUsuario) {
+		log.debug("[start] OrdemApplicationService - validaUsuarioId");
+		usuarioClientFeign.buscaUsuarioPorId(idUsuario);
+		log.debug("[finish] OrdemApplicationService - validaUsuarioId");
 	}
 
 }

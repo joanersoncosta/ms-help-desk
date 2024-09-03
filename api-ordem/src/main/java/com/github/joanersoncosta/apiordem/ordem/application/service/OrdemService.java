@@ -10,7 +10,7 @@ import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemRe
 
 public interface OrdemService {
 	NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest);
-	void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest);
+	void atualizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest);
 	OrdemResponse buscaOrdemPorId(UUID idOrdem);
 	void deletaOrdemPorId(UUID idOrdem);
 	List<OrdemResponse> listaOrdens();

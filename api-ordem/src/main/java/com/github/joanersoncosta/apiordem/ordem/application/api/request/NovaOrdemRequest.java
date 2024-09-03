@@ -4,16 +4,15 @@ import java.util.UUID;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record NovaOrdemRequest(
-		@Schema(description = "Request ID", example = "")
-		@NotBlank(message = "requestId não pode ser nulo ou em branco.")
-		@Size(min = 24, max = 36, message = "requestId pode ter entre 24 e 36 characters.")
-		UUID requestId,
+		@Schema(description = "Request ID", example = "123e4567-e89b-12d3-a456-426614174000")
+		@NotNull(message = "requestId não pode ser nulo ou em branco.")
+		UUID idRequest,
 		@Schema(description = "Cliente ID", example = "")
-		@NotBlank(message = "idCliente não pode ser nulo ou em branco.")
-		@Size(min = 24, max = 36, message = "idCliente pode ter entre 24 e 36 characters.")
+		@NotNull(message = "idCliente não pode ser nulo ou em branco.")
 		UUID idCliente,
 		@Schema(description = "Titlo da ordem", example = "")
 		@NotBlank(message = "Titlo não pode ser nulo ou em branco.")

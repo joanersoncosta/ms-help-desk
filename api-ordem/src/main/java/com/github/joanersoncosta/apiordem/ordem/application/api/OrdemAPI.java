@@ -59,7 +59,7 @@ public interface OrdemAPI {
 	})
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@PutMapping(path = "/{idOrdem}")
-	void atalizaOrdem(@PathVariable(name = "idOrdem") UUID idOrdem, @RequestBody @Valid AtualizaOrdemRequest rdemRequest);
+	void atualizaOrdem(@PathVariable(name = "idOrdem") UUID idOrdem, @RequestBody @Valid AtualizaOrdemRequest rdemRequest);
 
 	@Operation(summary = "Busca ordem por ID")
 	@ApiResponses(value = {
@@ -86,7 +86,7 @@ public interface OrdemAPI {
 				content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ErrorApiResponse.class)))
 	})
 	@ResponseStatus(code = HttpStatus.OK)
-	@GetMapping(path = "/{idOrdem}")
+	@GetMapping()
 	List<OrdemResponse>listaOrdens();
 
 	@Operation(summary = "Deleta Ordem")

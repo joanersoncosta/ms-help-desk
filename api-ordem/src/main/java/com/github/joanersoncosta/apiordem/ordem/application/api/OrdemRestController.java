@@ -29,10 +29,10 @@ public class OrdemRestController implements OrdemAPI {
 	}
 
 	@Override
-	public void atalizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
-		log.debug("[start] OrdemRestController - atalizaOrdem");
-		ordemService.atalizaOrdem(idOrdem, ordemRequest);
-		log.debug("[finish] OrdemRestController - atalizaOrdem");
+	public void atualizaOrdem(UUID idOrdem, AtualizaOrdemRequest ordemRequest) {
+		log.debug("[start] OrdemRestController - atualizaOrdem");
+		ordemService.atualizaOrdem(idOrdem, ordemRequest);
+		log.debug("[finish] OrdemRestController - atualizaOrdem");
 	}
 
 	@Override
