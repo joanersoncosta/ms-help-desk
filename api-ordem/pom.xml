@@ -55,6 +55,14 @@
 			<version>2.0.4</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>		
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -103,7 +111,7 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version> <!-- Ou a versão compatível com o seu projeto -->
+           <!-- <version>3.10.1</version>  Ou a versão compatível com o seu projeto -->
             <configuration>
                 <source>17</source> <!-- Ou a versão do Java que você está usando -->
                 <target>17</target>

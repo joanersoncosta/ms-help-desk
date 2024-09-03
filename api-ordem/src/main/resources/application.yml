@@ -2,11 +2,5 @@ spring:
   application:
    name: api-ordem
   profiles:
-    active: ${PROFILE_ACTIVE:dev}
-  jpa:      
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: America/Sao_Paulo
-      
+    active: ${PROFILE_ACTIVE:dev}      
       
