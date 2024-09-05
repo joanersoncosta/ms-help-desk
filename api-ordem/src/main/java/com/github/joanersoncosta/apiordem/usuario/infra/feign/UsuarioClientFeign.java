@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.github.joanersoncosta.apiordem.usuario.infra.feign.client.UsuarioResponse;
 
-@FeignClient(name = "api-usuario", url = "http://localhost:8080/api/v1/usuario")
+@FeignClient(name = "api-usuario", path = "/api/v1/usuario")
 public interface UsuarioClientFeign {
 
 	@ResponseStatus(code = HttpStatus.OK)

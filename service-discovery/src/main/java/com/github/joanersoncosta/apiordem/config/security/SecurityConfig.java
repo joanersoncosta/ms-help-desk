@@ -1,4 +1,4 @@
-package config.security;
+package com.github.joanersoncosta.apiordem.config.security;
 
 //@Configuration
 //@EnableWebSecurity

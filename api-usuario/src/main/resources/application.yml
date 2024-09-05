@@ -11,21 +11,4 @@ spring:
       profile: dev
       label: main
       import-check:
-        enabled: false     
-         
-eureka:  
-  client:
-    service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
-  instance:
-    instance-id: ${spring.application.name}
-       
-logging:
-  level:
-    org:
-      springframework:
-        cloud: DEBUG
-    com:
-      netflix:
-        discovery: DEBUG
-        eureka: DEBUG       
+        enabled: false         
