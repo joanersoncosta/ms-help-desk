@@ -13,6 +13,22 @@ spring:
       import-check:
         enabled: false
         
+  rabbitmq:   
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    connection-timeout: 10000
+    
+#RABBITMQ COSTOM CONFIG
+rabbitmq:
+ exchange:
+  name: helpdesk
+ queue:
+  name: ordens.v1.ordem-criada
+ routingKey:
+  name: rk.ordens.create
+   
 eureka:  
   client:
     service-url:

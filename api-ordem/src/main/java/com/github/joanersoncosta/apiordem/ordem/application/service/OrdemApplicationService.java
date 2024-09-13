@@ -12,7 +12,10 @@ import com.github.joanersoncosta.apiordem.ordem.application.api.response.OrdemRe
 import com.github.joanersoncosta.apiordem.ordem.application.repository.OrdemRepository;
 import com.github.joanersoncosta.apiordem.ordem.domain.Ordem;
 import com.github.joanersoncosta.apiordem.ordem.domain.OrdemMapper;
+import com.github.joanersoncosta.apiordem.ordem.domain.dtos.OrdemCriadaResponse;
+import com.github.joanersoncosta.apiordem.ordem.infra.RabbitMQPublicador;
 import com.github.joanersoncosta.apiordem.usuario.infra.feign.UsuarioClientFeign;
+import com.github.joanersoncosta.apiordem.usuario.infra.feign.client.UsuarioResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,13 +27,16 @@ public class OrdemApplicationService implements OrdemService {
 	private final OrdemRepository ordemRepository;
 	private final OrdemMapper ordemMapper;
 	private final UsuarioClientFeign usuarioClientFeign;
+	private final RabbitMQPublicador rabbitMQPublicador;
 	
 	@Override
 	public NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest) {
 		log.debug("[start] OrdemApplicationService - criaNovaOrdem");
 		log.debug("[novaOrdemRequest] {}", novaOrdemRequest.toString());
-		validaUsuarioId(novaOrdemRequest.idCliente());
+		var cliente = validaUsuarioId(novaOrdemRequest.idCliente());
+		var tecnico = validaUsuarioId(novaOrdemRequest.idRequest());
 		Ordem ordem = ordemRepository.salva(new Ordem(novaOrdemRequest));
+		rabbitMQPublicador.publica(new OrdemCriadaResponse(ordemMapper.fromOrdemResponse(ordem), tecnico, cliente));
 		log.debug("[finish] OrdemApplicationService - criaNovaOrdem");
 		return ordemMapper.fromIdOrdemResponse(ordem);
 	}
@@ -71,10 +77,11 @@ public class OrdemApplicationService implements OrdemService {
 		return ordemMapper.fromOrdemResponse(ordens);
 	}
 	
-	public void validaUsuarioId(UUID idUsuario) {
+	public UsuarioResponse validaUsuarioId(UUID idUsuario) {
 		log.debug("[start] OrdemApplicationService - validaUsuarioId");
-		usuarioClientFeign.buscaUsuarioPorId(idUsuario);
+		UsuarioResponse usuario = usuarioClientFeign.buscaUsuarioPorId(idUsuario);
 		log.debug("[finish] OrdemApplicationService - validaUsuarioId");
+		return usuario;
 	}
 
 }
