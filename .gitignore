@@ -3,3 +3,4 @@ RemoteSystemsTempFiles/.metadata/
 RemoteSystemsTempFiles/
 .fastRequest/
 .idea
+docker-compose.yml
