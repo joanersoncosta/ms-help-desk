@@ -15,11 +15,11 @@ import lombok.extern.log4j.Log4j2;
 public class RabbitMQInfraPublicador implements RabbitMQPublicador {
 	private final RabbitTemplate rabbitTemplate;
 	private final RabbitMQProperties rabbitMQProperties;
-
+    
 	@Override
 	public void publica(OrdemCriadaResponse ordemResponse) {
 		log.debug("[start] RabbitMQInfraPublicador - publica");
-		log.debug("[ordemResponse] {}", ordemResponse);
+		log.debug("[ordemResponse] {}", ordemResponse.toString());
 		rabbitTemplate.convertAndSend(rabbitMQProperties.getExchangeName() , rabbitMQProperties.getRoutingKeyOrdemCreate(), ordemResponse);
 		log.debug("[finish] RabbitMQInfraPublicador - publica");
 	}
