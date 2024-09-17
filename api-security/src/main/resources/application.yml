@@ -1,0 +1,5 @@
+spring:
+ application:
+  name: api-security
+ profiles:
+  active: ${PROFILE_ACTIVE:dev}  

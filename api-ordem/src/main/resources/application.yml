@@ -1,0 +1,30 @@
+spring:
+  application:
+   name: api-ordem
+  profiles:
+    active: ${PROFILE_ACTIVE:dev}   
+  config:
+    import: "configserver:http://localhost:8888"    
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}  # URL do Config Server
+      profile: dev
+      label: main
+      import-check:
+        enabled: false
+        
+  rabbitmq:   
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:admin}
+    connection-timeout: 10000
+    
+#RABBITMQ COSTOM CONFIG
+rabbitmq:
+ exchange:
+  name: helpdesk
+ queue:
+  name: ordens.v1.ordem-criada
+ routingKey:
+  name: rk.ordens.create
