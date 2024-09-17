@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.github.joanersoncosta.apiordem.usuario.infra.feign.client.UsuarioResponse;
 
-@FeignClient(name = "api-usuario", path = "/api/v1/usuario")
+@FeignClient(value = "api-usuario", path = "/api/v1/usuario")
 public interface UsuarioClientFeign {
 
 	@ResponseStatus(code = HttpStatus.OK)
-	@GetMapping(value = "/{idUsuario}")
+	@GetMapping(path = "/{idUsuario}")
 	UsuarioResponse buscaUsuarioPorId(@PathVariable(value = "idUsuario") UUID idUsuario);
 
 }

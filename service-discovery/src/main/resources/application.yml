@@ -4,14 +4,3 @@ spring:
   cloud:
     config: 
      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
-      
-eureka:   
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-  server:
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 15000
-server:
-  port: ${PORT:8761}
-
