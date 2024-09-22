@@ -28,13 +28,13 @@ public class OrdemApplicationService implements OrdemService {
 	private final OrdemMapper ordemMapper;
 	private final UsuarioClientFeign usuarioClientFeign;
 	private final RabbitMQPublicador rabbitMQPublicador;
-	
+
 	@Override
 	public NovaOrdemReIdsponse criaNovaOrdem(NovaOrdemRequest novaOrdemRequest) {
 		log.debug("[start] OrdemApplicationService - criaNovaOrdem");
 		log.debug("[novaOrdemRequest] {}", novaOrdemRequest.toString());
-		var cliente = validaUsuarioId(novaOrdemRequest.idCliente());
-		var tecnico = validaUsuarioId(novaOrdemRequest.idRequest());
+		var cliente = new UsuarioResponse(UUID.fromString("b67b2c68-8b22-41df-a29b-3c49d79726dd"), "joao", "joao@gmail.com");//validaUsuarioId(novaOrdemRequest.idCliente());
+		var tecnico = new UsuarioResponse(UUID.fromString("6985c841-e2c3-4cdf-a275-8b8e754efcda"), "Alex", "alex@gmail.com");//validaUsuarioId(novaOrdemRequest.idRequest());
 		Ordem ordem = ordemRepository.salva(new Ordem(novaOrdemRequest));
 		rabbitMQPublicador.publica(new OrdemCriadaResponse(ordemMapper.fromOrdemResponse(ordem), tecnico, cliente));
 		log.debug("[finish] OrdemApplicationService - criaNovaOrdem");
