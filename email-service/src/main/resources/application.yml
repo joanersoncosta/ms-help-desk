@@ -30,13 +30,3 @@ mail:
   username: ${MAIL_USERNAME:front3890@gmail.com}
   passwrod: ${MAIL_PASSWORD:plnd ptze vsta wanb}
   protocolo: ${MAIL_PROTOCOL:smtp}
-  text_created-order-confirmation: |
-    Olá %s, sua ordem for criada com sucesso!
-    
-    Detalhes da orddem:
-    - ID: %s
-    - Titulo: %s
-    - Descricao: %s
-    - Data de criação: %s
-    - Status: %s
-    - Técnico responsável: %s
