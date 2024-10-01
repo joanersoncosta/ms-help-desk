@@ -1,3 +1,32 @@
 spring:
   application:
-  name: email-service
+    name: email-service
+  rabbitmq:   
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:admin}
+    password: ${RABBITMQ_PASSWORD:admin}
+    connection-timeout: 10000
+  amqp:
+    deserialization:
+      trust:
+        all: true   
+         
+server:
+  port: 8083
+    
+#RABBITMQ COSTOM CONFIG
+rabbitmq:
+ exchange:
+  name: helpdesk
+ queue:
+  name: ordens.v1.ordem-criada
+ routingKey:
+  name: rk.ordens.create
+    
+mail:
+  host: ${MAIL_HOST:smtp.gmail.com}
+  port: ${MAIL_PORT:587}
+  username: ${MAIL_USERNAME:front3890@gmail.com}
+  passwrod: ${MAIL_PASSWORD:plnd ptze vsta wanb}
+  protocolo: ${MAIL_PROTOCOL:smtp}

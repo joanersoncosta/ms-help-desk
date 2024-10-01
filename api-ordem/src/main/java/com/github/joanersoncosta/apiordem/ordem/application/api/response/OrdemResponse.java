@@ -1,7 +1,5 @@
 package com.github.joanersoncosta.apiordem.ordem.application.api.response;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -14,8 +12,5 @@ public record OrdemResponse(
 	String titlo,
 	String descricao,
 	OrdemStatus ordemStatus,
-	LocalDateTime dataCriacao,
-	LocalDateTime dataFechamento) implements Serializable{
-	@Serial
-	private static final long serialVersionUID = 1L;
+	LocalDateTime dataCriacao){
 }
