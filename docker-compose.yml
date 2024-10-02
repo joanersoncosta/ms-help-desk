@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   rabbitmq:
     image: rabbitmq:3.13.3-management
     container_name: 'rabbitmq'
@@ -8,13 +9,40 @@ services:
       RABBITMQ_DEFAULT_USER: 'admin'  # Nome de usuário padrão
       RABBITMQ_DEFAULT_PASS: 'admin'  # Senha padrão
     ports:
-      - '5672:5672' 
+      - '5672:5672'
       - '15672:15672'
     networks:
       - helpdesk
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+
+  service-discovery:
+    image: joanersoncosta/service-discovery
+    container_name: 'service-discovery'
+    environment:
+      - PORT=8761
+    ports:
+      - "8761:8761"
+    expose:
+      - 8761
+    networks:
+      - helpdesk
+
+  api-gateway:
+    image: joanersoncosta/api-gateway
+    container_name: 'api-gateway'
+    environment:
+      - EUREKA_URI=http://service-discovery:8761/eureka/
+      - SERVER_PORT=8765
+    ports:
+      - "8765:8765"
+    expose:
+      - 8765
+    depends_on:
+      - service-discovery
+    networks:
+      - helpdesk
 
   config-server:
     image: joanersoncosta/config-server
@@ -23,6 +51,7 @@ services:
       - CONFIG_SERVER_URI=https://github.com/joanersoncosta/helph-desk-server-configs
       - CONFIG_SERVER_USERNAME=
       - CONFIG_SERVER_PASSWORD=
+      - EUREKA_SERVER=http://host.docker.internal:8761/eureka/
       - PORT=8888
     ports:
       - "8888:8888"
@@ -30,23 +59,6 @@ services:
       - 8888
     networks:
       - helpdesk
-
-  service-discovery:
-    image: joanersoncosta/service-discovery
-    container_name: 'service-discovery'
-    environment:
-      - CONFIG_SERVER_URI=config-server:8888
-      - PORT=8761
-    ports:
-      - "8761:8761"
-    expose:
-      - 8761
-    networks:
-      - helpdesk
-    depends_on:
-      - config-server
-    links:
-      - config-server
 
 networks:
     helpdesk:
